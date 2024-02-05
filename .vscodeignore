@@ -6,4 +6,4 @@ tsconfig.json
 .prettierrc.js
 .editorconfig
 .vscode/
-pnpm-lock.yaml
+/src
