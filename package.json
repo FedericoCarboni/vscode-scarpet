@@ -4,21 +4,22 @@
   "displayName": "scarpet-ls",
   "version": "0.1.0-dev",
   "description": "Scarpet Language Client for VSCode",
-  "publisher": "scarpet",
+  "publisher": "federicocarboni",
+  "preview": true,
+  "bugs": "https://github.com/FedericoCarboni/vscode-scarpet/issues",
   "activationEvents": [
     "onLanguage:scarpet"
   ],
   "engines": {
-    "vscode": "^1.86.0"
+    "vscode": "^1.63.0"
   },
   "contributes": {
     "languages": [
       {
         "id": "scarpet",
         "aliases": [
-          "scarpet",
-          "sc",
-          "scl"
+          "Scarpet",
+          "scarpet"
         ],
         "extensions": [
           ".sc",
@@ -35,6 +36,10 @@
       }
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FedericoCarboni/vscode-scarpet.git"
+  },
   "main": "./dist/extension.cjs",
   "scripts": {
     "vscode:prepublish": "npm run lint && npm run build-server -- --minify && npm run build -- --minify",
@@ -43,7 +48,7 @@
     "build": "esbuild src/extension.js --bundle --outfile=dist/extension.cjs --external:vscode --format=cjs --platform=node --target=node16"
   },
   "keywords": [],
-  "author": "",
+  "author": "Federico Carboni",
   "license": "MIT",
   "dependencies": {
     "scarpet-ls": "github:FedericoCarboni/scarpet-ls",
@@ -51,7 +56,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.16",
-    "@types/vscode": "^1.86.0",
+    "@types/vscode": "^1.63.0",
     "@vscode/vsce": "^2.23.0",
     "esbuild": "^0.20.0",
     "eslint": "^8.56.0",
