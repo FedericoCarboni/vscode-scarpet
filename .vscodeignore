@@ -1,0 +1,9 @@
+node_modules/
+tsconfig.json
+.gitignore
+.gitattributes
+.eslintrc.cjs
+.prettierrc.js
+.editorconfig
+.vscode/
+pnpm-lock.yaml
