@@ -8,7 +8,9 @@ let client;
 /** @param {vscode.ExtensionContext} context */
 export async function activate(context) {
     // The server is implemented in node
-    const serverModule = context.asAbsolutePath(path.join('dist', 'server.cjs'));
+    const serverModule = context.asAbsolutePath(
+        path.join('dist', 'server.cjs'),
+    );
     // The debug options for the server
     // --inspect=6009: runs the server in Node's Inspector mode so VS Code can
     // attach to the server for debugging
