@@ -9,7 +9,7 @@
     "onLanguage:scarpet"
   ],
   "engines": {
-    "vscode": "^1.65.0"
+    "vscode": "^1.86.0"
   },
   "contributes": {
     "languages": [
@@ -52,6 +52,7 @@
   "devDependencies": {
     "@types/node": "^20.11.16",
     "@types/vscode": "^1.86.0",
+    "@vscode/vsce": "^2.23.0",
     "esbuild": "^0.20.0",
     "eslint": "^8.56.0",
     "eslint-plugin-import": "^2.29.1",
