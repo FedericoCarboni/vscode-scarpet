@@ -5,6 +5,10 @@ Provides IDE-like features for Scarpet.
 VSCode extension for the Scarpet LSP, see [FedericoCarboni/scarpet-ls] for
 supported features.
 
+## Screenshot
+
+![Autocomplete Example](screenshot/autocomplete.png)
+
 ## Installation
 
 On VSCodium install from [the Open VSX package][2]. On VSCode see
