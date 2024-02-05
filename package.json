@@ -4,6 +4,7 @@
   "displayName": "scarpet-ls",
   "version": "0.1.0-dev",
   "description": "Scarpet Language Client for VSCode",
+  "publisher": "scarpet",
   "activationEvents": [
     "onLanguage:scarpet"
   ],
@@ -36,7 +37,10 @@
   },
   "main": "./dist/extension.cjs",
   "scripts": {
-    "build": "esbuild scarpet-ls --bundle --outfile=dist/server.cjs --format=cjs --platform=node --target=node16 && esbuild src/extension.js --bundle --outfile=dist/extension.cjs --external:vscode --format=cjs --platform=node --target=node16"
+    "vscode:prepublish": "npm run lint && npm run build-server -- --minify && npm run build -- --minify",
+    "lint": "tsc && prettier -c --write \"src/**/*.js\" && eslint",
+    "build-server": "esbuild scarpet-ls --bundle --outfile=dist/server.cjs --format=cjs --platform=node --target=node16",
+    "build": "esbuild src/extension.js --bundle --outfile=dist/extension.cjs --external:vscode --format=cjs --platform=node --target=node16"
   },
   "keywords": [],
   "author": "",
