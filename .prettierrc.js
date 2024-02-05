@@ -1,5 +1,3 @@
-'use strict';
-
 /** @type {import('prettier').Config} */
 const config = {
     trailingComma: 'all',
@@ -10,4 +8,4 @@ const config = {
     plugins: ['prettier-plugin-jsdoc'],
 };
 
-module.exports = config;
+export default config;
