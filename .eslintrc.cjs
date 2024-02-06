@@ -34,6 +34,8 @@ const config = {
         ],
         'import/no-default-export': 'error',
         'import/extensions': ['error', {js: 'always'}],
+        // vscode is a virtual package which is never resolved
+        'import/no-unresolved': ['error', {ignore: ['vscode']}],
         'import/no-amd': 'error',
         'import/no-commonjs': 'error',
     },
