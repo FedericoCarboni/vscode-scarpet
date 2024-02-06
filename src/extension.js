@@ -1,11 +1,10 @@
-import * as vscode from 'vscode';
 import * as lc from 'vscode-languageclient/node.js';
 import * as path from 'path';
 
 /** @type {lc.LanguageClient} */
 let client;
 
-/** @param {vscode.ExtensionContext} context */
+/** @param {import('vscode').ExtensionContext} context */
 export async function activate(context) {
     // The server is implemented in node
     const serverModule = context.asAbsolutePath(
