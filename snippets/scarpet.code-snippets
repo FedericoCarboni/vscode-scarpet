@@ -1,0 +1,16 @@
+{
+  "Anonymous Function": {
+    "prefix": "_",
+    "body": "_(${1:params}) -> ($0)",
+    "description": "Anonymous Function"
+  },
+  "Function Definition": {
+    "prefix": "function",
+    "body": [
+      "${1:name}(${2:params}) -> (",
+      "\t$0",
+      ");"
+    ],
+    "description": "Function Definition"
+  }
+}
