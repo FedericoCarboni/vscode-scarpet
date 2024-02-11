@@ -40,6 +40,38 @@
         "language": "scarpet",
         "path": "./snippets/scarpet.code-snippets"
       }
+    ],
+    "breakpoints": [
+      {
+        "language": "scarpet"
+      }
+    ],
+    "debuggers": [
+      {
+        "type": "scarpet",
+        "languages": [
+          "scarpet"
+        ],
+        "label": "Scarpet Debug",
+        "configurationAttributes": {
+          "launch": {
+            "properties": {
+              "program": {
+                "type": "string",
+                "description": "Absolute path to a scarpet file."
+              }
+            }
+          }
+        },
+        "initialConfigurations": [
+          {
+            "type": "scarpet",
+            "request": "launch",
+            "name": "Load Scarpet App",
+            "program": "${workspaceFolder}"
+          }
+        ]
+      }
     ]
   },
   "repository": {
