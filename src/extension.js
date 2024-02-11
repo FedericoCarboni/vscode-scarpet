@@ -1,3 +1,4 @@
+import * as vscode from 'vscode';
 import * as lc from 'vscode-languageclient/node.js';
 import * as path from 'path';
 
@@ -40,6 +41,17 @@ export async function activate(context) {
         serverOptions,
         clientOptions,
     );
+
+    vscode.debug.registerDebugConfigurationProvider('scarpet', {
+
+    });
+
+    vscode.debug.registerDebugAdapterDescriptorFactory('scarpet', {
+        createDebugAdapterDescriptor(_session) {
+            console.log('helel')
+            return new vscode.DebugAdapterServer(6090);
+        },
+    });
 
     // Start the client. This will also launch the server
     await client.start().catch((reason) => {
