@@ -1,239 +1,227 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "scarpet",
-	"patterns": [{
-			"include": "#expression"
-		},
-		{
-			"include": "#statements"
-		}
-	],
-	"repository": {
-		"expression": {
-			"patterns": [
-				{
-					"include": "#strings"
-				},
-				{
-					"include": "#keywords"
-				},
-				{
-					"include": "#paren-expression"
-				},
-				{
-					"include": "#square-expression"
-				},
-				{
-					"include": "#curly-expression"
-				}
-			]
-		},
-		"statements": {
-			"patterns": [{
-					"include": "#variables"
-				},
-				{
-					"include": "#comments"
-				}
-			]
-		},
-		"keywords": {
-			"patterns": [{
-					"match": "(?<!\\w)(if|return|exit|try|call|import|outer|break|continue|for|c_for|while|loop|vars?|undef)(?!\\w)",
-					"captures": {
-						"1": {
-							"name": "keyword.control"
-						}
-					}
-				},
-				{
-					"name": "keyword.operator.definition",
-					"match": "\\-\\>"
-				},
-				{
-					"name": "keyword.operator.spread",
-					"match": "\\.\\.\\."
-				},
-				{
-					"name": "keyword.operator.arithmetic",
-					"match": "\\b(\\+|\\-|\\*\\/)\\b"
-				},
-				{
-					"name": "keyword.operator.comparison",
-					"match": "(==|\\!=|<|>|<=|>=)"
-				},
-				{
-					"name": "keyword.operator.logical",
-					"match": "(&&|\\|\\|)"
-				},
-				{
-					"name": "keyword.operator.assignment",
-					"match": "(=|<>|\\+=)"
-				},
-				{
-					"name": "keyword.operator.negation",
-					"match": "\\!"
-				}
-			]
-		},
-		"variables": {
-			"patterns": [{
-					"match": "[^\\w]?(null|true|false)|(pi|euler)[^\\w]",
-					"captures": {
-						"1": {
-							"name": "constant.language"
-						},
-						"2": {
-							"name": "constant.numeric.constant"
-						}
-					}
-				},
-				{
-					"name": "constant.numeric",
-					"patterns": [{
-							"name": "constant.numeric.exponential",
-							"match": "\\-?\\d+e\\-?\\d+"
-						},
-						{
-							"name": "constant.numeric.decimal",
-							"match": "\\-?\\d+(.\\d+)?"
-						},
-						{
-							"name": "constant.numeric.hexadecimal",
-							"match": "0x\\h+"
-						}
-					]
-				},
-				{
-					"begin": "(\\w+)(\\()",
-					"end": "\\)",
-					"beginCaptures": {
-						"1": {
-							"name": "entity.name.function"
-						},
-						"2": {
-							"name": "punctuation.paren.open"
-						}
-					},
-					"endCaptures": {
-						"0": {
-							"name": "punctuation.paren.close"
-						}
-					},
-					"contentName": "expression.group",
-					"patterns": [
-						{
-							"include": "#expression"
-						},
-						{
-							"include": "#statements"
-						}
-					]
-				},
-				{
-					"name": "variable.name",
-					"match": "(\\w+)"
-				}
-			]
-		},
-		"comments": {
-			"name": "comment.line",
-			"patterns": [{
-				"name": "comment.line.double-slash",
-				"match": "\\/\\/.*\\n"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted",
-			"patterns": [{
-				"name": "string.quoted.single",
-				"begin": "'",
-				"end": "'",
-				"beginCaptures": {
-					"0": {
-						"name": "punctuation.definition.string.begin"
-					}
-				},
-				"endCaptures": {
-					"0": {
-						"name": "punctuation.definition.string.end"
-					}
-				},
-				"patterns": [{
-					"name": "constant.character.escape.scarpet",
-					"match": "\\\\."
-				}]
-			}]
-		},
-		"paren-expression": {
-			"begin": "\\(",
-			"end": "\\)",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.paren.open"
-				}
-			},
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.paren.close"
-				}
-			},
-			"name": "expression.group",
-			"patterns": [
-				{
-					"include": "#expression"
-				},
-				{
-					"include": "#statements"
-				}
-			]
-		},
-		"curly-expression": {
-			"begin": "\\{",
-			"end": "\\}",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.curly.open"
-				}
-			},
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.curly.close"
-				}
-			},
-			"name": "expression.group",
-			"patterns": [
-				{
-					"include": "#expression"
-				},
-				{
-					"include": "#statements"
-				}
-			]
-		},
-		"square-expression": {
-			"begin": "\\[",
-			"end": "\\]",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.square.open"
-				}
-			},
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.square.close"
-				}
-			},
-			"name": "expression.group",
-			"patterns": [
-				{
-					"include": "#expression"
-				},
-				{
-					"include": "#statements"
-				}
-			]
-		}
-	},
-	"scopeName": "source.sc"
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Scarpet",
+  "fileTypes": [
+    ".sc",
+    ".scl"
+  ],
+  "scopeName": "source.scarpet",
+  "patterns": [
+    {
+      "include": "#expression"
+    }
+  ],
+  "repository": {
+    "expression": {
+      "comment": "anything is an expression in scarpet",
+      "patterns": [
+        {
+          "include": "#comments"
+        },
+        {
+          "include": "#constants"
+        },
+        {
+          "include": "#keywords"
+        },
+        {
+          "include": "#functions"
+        },
+        {
+          "include": "#variables"
+        }
+      ]
+    },
+    "comments": {
+      "comment": "double-slash single line comments",
+      "name": "comment.line.double-slash",
+      "match": "(//).*$",
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.comment.scarpet"
+        }
+      }
+    },
+    "constants": {
+      "patterns": [
+        {
+          "comment": "boolean constants",
+          "name": "constant.language.bool.scarpet",
+          "match": "\\b(true|false)\\b"
+        },
+        {
+          "comment": "language constants",
+          "name": "constant.language.scarpet",
+          "match": "\\bnull\\b"
+        },
+        {
+          "comment": "numeric constants",
+          "name": "constant.language.numeric.scarpet",
+          "match": "\\b(pi|euler)\\b"
+        },
+        {
+          "name": "constant.numeric.hex.scarpet",
+          "match": "\\b0x[0-9a-fA-F]+\\b"
+        },
+        {
+          "comment": "decimal numeric constants",
+          "name": "constant.numeric.decimal.scarpet",
+          "match": "\\b\\d+(?:(\\.)\\d+)?(?:(E|e)([+-]?)(\\d+))?",
+          "captures": {
+            "1": {
+              "name": "punctuation.separator.dot.decimal.scarpet"
+            }
+          }
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "comment": "control flow keywords (functions)",
+          "match": "\\b(break|c_for|call|continue|exit|for|if|loop|outer|return|then|throw|try|undef|vars?|while)\\s*(\\()",
+          "captures": {
+            "1": {
+              "name": "keyword.control.scarpet"
+            },
+            "2": {
+              "name": "punctuation.brackets.round.scarpet"
+            }
+          }
+        },
+        {
+          "match": "\\b(import)\\s*(\\()",
+          "captures": {
+            "1": {
+              "name": "keyword.control.import.scarpet"
+            },
+            "2": {
+              "name": "punctuation.brackets.round.scarpet"
+            }
+          }
+        },
+        {
+          "match": "\\b(type|bool|number|str|l|m)\\s*(\\()",
+          "captures": {
+            "1": {
+              "name": "keyword.other.type.scarpet"
+            },
+            "2": {
+              "name": "punctuation.brackets.round.scarpet"
+            }
+          }
+        },
+        {
+          "name": "keyword.operator.arrow.scarpet",
+          "match": "->"
+        },
+        {
+          "name": "keyword.operator.spread.scarpet",
+          "match": "\\.\\.\\."
+        },
+        {
+          "name": "keyword.operator.arithmetic.scarpet",
+          "match": "\\+|\\-|\\*|/|%|\\^"
+        },
+        {
+          "match": "\\b(sum|difference|product|quotient)\\s*(\\()",
+          "captures": {
+            "1": {
+              "name": "keyword.operator.arithmetic.scarpet"
+            },
+            "2": {
+              "name": "punctuation.brackets.round.scarpet"
+            }
+          }
+        },
+        {
+          "name": "keyword.operator.comparison.scarpet",
+          "match": "(==|\\!=|<|>|<=|>=)"
+        },
+        {
+          "match": "\\b(equal|unique|increasing|decreasing|nonincreasing|nondecreasing)\\s*(\\()",
+          "captures": {
+            "1": {
+              "name": "keyword.operator.comparison.scarpet"
+            },
+            "2": {
+              "name": "punctuation.brackets.round.scarpet"
+            }
+          }
+        },
+        {
+          "name": "keyword.operator.logical.scarpet",
+          "match": "(&&|\\|\\||\\!)"
+        },
+        {
+          "match": "\\b(and|or|not)\\s*(\\()",
+          "captures": {
+            "1": {
+              "name": "keyword.operator.logical.scarpet"
+            },
+            "2": {
+              "name": "punctuation.brackets.round.scarpet"
+            }
+          }
+        },
+        {
+          "name": "keyword.operator.assignment.scarpet",
+          "match": "(=|<>|\\+=)"
+        },
+        {
+          "comment": "bitwise operators only functions",
+          "match": "\\b(bitwise_and|bitwise_xor|bitwise_or|bitwise_shift_left|bitwise_shift_right|bitwise_arithmetic_shift_right|bitwise_roll_left|bitwise_roll_right|bitwise_not|bitwise_popcount|double_to_long_bits|long_to_double_bits)\\s*(\\()",
+          "captures": {
+            "1": {
+              "name": "keyword.operator.bitwise.scarpet"
+            },
+            "2": {
+              "name": "punctuation.brackets.round.scarpet"
+            }
+          }
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "comment": "not highlighting parameters as it would be too difficult to do considering edge cases like function declarations inside maps",
+          "begin": "\\b(\\w+)\\s*(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.function.scarpet"
+            },
+            "2": {
+              "name": "punctuation.brackets.round.scarpet"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.brackets.round.scarpet"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#expression"
+            }
+          ]
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "comment": "global variables",
+          "name": "variable.name.scarpet",
+          "match": "\\bglobal_\\w*\\b"
+        },
+        {
+          "comment": "variables",
+          "name": "variable.other.scarpet",
+          "match": "\\b\\w+\\b"
+        }
+      ]
+    }
+  }
 }
