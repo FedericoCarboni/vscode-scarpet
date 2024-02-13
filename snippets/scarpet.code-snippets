@@ -12,5 +12,16 @@
       ");"
     ],
     "description": "Function Definition"
+  },
+  "Try Expression": {
+    "prefix": "try",
+    "body": [
+      "try(",
+      "\t${1:expr},"
+      "\t${2:'exception'},",
+      "\t${3:catch_expr},${4}",
+      ");"
+    ],
+    "description": "Try Expression"
   }
 }
