@@ -22,6 +22,9 @@
           "include": "#constants"
         },
         {
+          "include": "#strings"
+        },
+        {
           "include": "#keywords"
         },
         {
@@ -72,6 +75,50 @@
               "name": "punctuation.separator.dot.decimal.scarpet"
             }
           }
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.single.scarpet",
+      "begin": "'",
+      "end": "'",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.scarpet"
+        }
+      },
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.scarpet"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#string_escaped_char"
+        },
+        {
+          "include": "#string_placeholder"
+        }
+      ]
+    },
+    "string_escaped_char": {
+      "patterns": [
+        {
+          "match": "\\\\[\\\\'tn]",
+          "name": "constant.character.escape.scarpet"
+        },
+        {
+          "match": "\\\\.",
+          "name": "invalid.illegal.unknown-escape.scarpet"
+        }
+      ]
+    },
+    "string_placeholder": {
+      "comment": "supported str() format placeholders",
+      "patterns": [
+        {
+          "match": "%(\\d\\$)?[\\-#\\+ 0,(]*(-?\\d+)?(\\.-?\\d+)?[bBhHsScCdoxXeEfgGaA%n]",
+          "name": "constant.other.placeholder.scarpet"
         }
       ]
     },
@@ -211,6 +258,11 @@
     },
     "variables": {
       "patterns": [
+        {
+          "comment": "global variables",
+          "name": "variable.name.scarpet",
+          "match": "\\b(_a|_i|_x|_y|_z|_trace|_)\\b"
+        },
         {
           "comment": "global variables",
           "name": "variable.name.scarpet",
